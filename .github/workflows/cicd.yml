@@ -1,0 +1,132 @@
+name: Build and Deploy
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4
+      with:
+        node-version: 'latest'
+
+    - name: 'install'
+      run: npm ci
+
+    - name: 'build'
+      run: npm run build
+
+    - name: package
+      if: github.event_name != 'pull_request'
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: 'dist'
+
+    - name: Publish Artifact
+      if: github.event_name != 'pull_request'
+      uses: actions/upload-artifact@v4
+      with:
+        name: infra
+        path: infrastructure
+
+  tag:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: write
+    outputs:
+      new-tag: ${{ steps.ccv.outputs.new-tag }}
+      new-tag-version: ${{ steps.ccv.outputs.new-tag-version }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Bump tag if necessary
+      id: ccv
+      uses: smlx/ccv@d3de774e9b607b079940a7a86952f44643743336 # v0.9.0
+    
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build, tag]
+    if: needs.tag.outputs.new-tag == 'true'
+    environment: prod
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+    - name: artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: dist
+        path: 'dist'
+
+    - name: Download Infra Artifact
+      uses: actions/download-artifact@v5
+      with:
+        name: infra
+        path: infrastructure
+
+    - uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-session-name: ${{ github.run_id }}
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+        aws-region: ${{ vars.AWS_REGION }}
+
+    - name: Deploy CFN Stack
+      run: |
+        aws cloudformation deploy \
+          --template-file infrastructure/cloudformation/spa-ssl-full-stack.yaml \
+          --stack-name ${{ vars.STACK_NAME }} \
+          --capabilities CAPABILITY_IAM \
+          --parameter-overrides DomainName=${{ vars.CF_Domain_Name }} \
+                                HostedZoneId=${{ vars.Hosted_Zone_Id }}
+
+    - name: Describe Stack Events on Failure
+      if: failure()
+      run: |
+        aws cloudformation describe-stack-events --stack-name ${{ vars.STACK_NAME }}
+
+    - name: Get Bucket Name
+      if: success()
+      id: bucket
+      run: |
+        echo "bucket_name=$(aws cloudformation describe-stacks --stack-name ${{ vars.STACK_NAME }} --query 'Stacks[0].Outputs[?OutputKey==`BucketName`].OutputValue' --output text)" >> $GITHUB_OUTPUT
+
+    - name: Sync Assets
+      if: success()
+      run: aws s3 sync dist/ s3://${{ steps.bucket.outputs.bucket_name }} --delete
+
+    - name: Invalidate CloudFront
+      if: success()
+      run: aws cloudfront create-invalidation --distribution-id $(aws cloudfront list-distributions --query 'DistributionList.Items[?Aliases.Items[0]==`${{ vars.CF_Domain_Name }}`].Id' --output text) --paths "/*"
+
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ needs.tag.outputs.new-tag-version }}
+        release_name: ${{ needs.tag.outputs.new-tag-version }}
+        draft: false
+        prerelease: false

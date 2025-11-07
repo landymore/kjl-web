@@ -1,1 +1,150 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+    --font-opensans: 'Open Sans', sans-serif;
+    --font-sourcecodepro: 'Source Code Pro', monospace;
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --foreground-rgb: 255, 255, 255;
+            --background-start-rgb: 0, 0, 0;
+            --background-end-rgb: 0, 0, 0;
+        }
+    }
+}
+
+main {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+body {
+    margin: auto;
+    max-width: 800px;
+    font-size: xx-large;
+    color: #d2d2d2;
+    background-color: #1e1e1e;
+    font-family: var(--font-opensans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: var(--font-sourcecodepro);
+}
+
+h1 {
+    font-size: xx-large;
+}
+
+article {
+    padding-top: 20px;
+}
+
+article header {
+    font-size: x-large;
+}
+
+.container {
+    font-size: large;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footertext {
+    font-size: small;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logoContainer {
+    display: flex;
+    padding: 5px;
+    font-family: 'Source Code Pro', monospace;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logoQuoteStyle {
+    color: #FFFFFF;
+}
+
+.logoBraceStyle {
+    color: #808080;
+}
+
+.logoVariableStyle {
+    color: #9cdbfc;
+}
+
+.logoValueStyle {
+    color: #ce9178;
+}
+
+@media (max-width: 625px) {
+    .container {
+        font-size: large;
+    }
+
+    header {
+        font-size: medium;
+    }
+
+    main {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    h1 {
+        font-size: x-large;
+    }
+
+    article header {
+        font-size: large;
+    }
+
+    article {
+        font-size: medium;
+    }
+
+    .logoContainer {
+        padding: 5px;
+        display: block;
+        font-family: 'Source Code Pro', monospace;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .logoBraceContainer {
+        width: 100%;
+    }
+
+    .logoVariableContainer {
+        padding-left: 50px;
+    }
+
+    .logoValueContainer {
+        padding-left: 100px;
+    }
+
+    .logoQuoteStyle {
+        color: #FFFFFF;
+    }
+
+    .logoBraceStyle {
+        color: #808080;
+    }
+
+    .logoVariableStyle {
+        color: #9cdbfc;
+    }
+
+    .logoValueStyle {
+        color: #ce9178;
+    }
+}
