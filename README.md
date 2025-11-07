@@ -1,4 +1,12 @@
-# KjlWeb
+# KevinJLandymore.com
+
+This is my personal website, recently relaunched with Angular. It's set as public to show a simple Angular single page app hosted on AWS with GitHub Actions.
+
+Cloudformation is in `infrastructure/cloudformation` and the workflow is `.github/workflows/cicd.yml`. Secrets are managed in GitHub, and we use an environment (`prod`) to gate deployments.
+
+Enjoy!
+
+## Angular README
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
 
