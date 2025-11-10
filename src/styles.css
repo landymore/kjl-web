@@ -24,6 +24,7 @@ body {
     max-width: 800px;
     font-size: xx-large;
     color: #d2d2d2;
+    padding-top: 4rem;
     background-color: #1e1e1e;
     font-family: var(--font-opensans);
     -webkit-font-smoothing: antialiased;
@@ -125,11 +126,11 @@ article header {
     }
 
     .logoVariableContainer {
-        padding-left: 50px;
+        padding-left: 2ch;
     }
 
     .logoValueContainer {
-        padding-left: 100px;
+        padding-left: 4ch;
     }
 
     .logoQuoteStyle {
@@ -148,3 +149,5 @@ article header {
         color: #ce9178;
     }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
