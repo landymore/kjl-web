@@ -1,12 +1,51 @@
-# KevinJLandymore.com
+# KevinJLandymore.com README
 
-This is my personal website, recently relaunched with Angular. It's set as public to show a simple Angular single page app hosted on AWS with GitHub Actions.
+This is my personal website, recently relaunched with Angular. It's set as public to show how I would go about creating a simple Angular single page app hosted on AWS with GitHub Actions.
 
-Cloudformation is in `infrastructure/cloudformation` and the workflow is `.github/workflows/cicd.yml`. Secrets are managed in GitHub, and we use an environment (`prod`) to gate deployments.
+## Development Environment
+
+I've worked on the Mac platform personally since 2008 and professionally since about 2018 (when I could get it approved at my organization). I use the following IDEs in no particular order of preference:
+* JetBrains Rider
+* JetBrains WebStorm
+* Visual Studio Code
+
+## AWS configuration
+
+This website is uses Cloudfront + S3 to host the static content in AWS.
+
+### Infrastructure as Code
+Cloudformation is in `infrastructure/cloudformation` and the workflow is `.github/workflows/cicd.yml`. Secrets and variables are managed in GitHub, and we use an environment (`prod`) configured with approvals to gate deployments. We do NOT use Pull requests as the final gate!
+
+### IAM Role trust policy
+
+Using the following trust policy I can ensure that only the production GitHub Actions environment from my repository can deploy to the production account hosting my website. 
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::<account number>:oidc-provider/token.actions.githubusercontent.com"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+                },
+                "StringLike": {
+                    "token.actions.githubusercontent.com:sub": "repo:landymore/kjl-web:environment:prod"
+                }
+            }
+        }
+    ]
+}
+```
 
 Enjoy!
 
-## Angular README
+# Angular README
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
 
