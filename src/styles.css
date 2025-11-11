@@ -17,14 +17,16 @@
 main {
     padding-left: 50px;
     padding-right: 50px;
+    padding-top: 20px;
+    font-size: large;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 body {
-    margin: auto;
-    max-width: 800px;
     font-size: xx-large;
     color: #d2d2d2;
-    padding-top: 4rem;
     background-color: #1e1e1e;
     font-family: var(--font-opensans);
     -webkit-font-smoothing: antialiased;
@@ -45,13 +47,9 @@ article {
 
 article header {
     font-size: x-large;
-}
-
-.container {
-    font-size: large;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    font-weight: 800;
+    /* Heavier than <strong> (typically 700) */
+    letter-spacing: 0.02em;
 }
 
 .footertext {
@@ -68,6 +66,8 @@ article header {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .logoQuoteStyle {
@@ -98,6 +98,7 @@ article header {
     main {
         padding-left: 50px;
         padding-right: 50px;
+        padding-top: 0px;
     }
 
     h1 {
@@ -105,7 +106,10 @@ article header {
     }
 
     article header {
-        font-size: large;
+        font-size: x-large;
+        font-weight: 800;
+        /* Heavier than <strong> (typically 700) */
+        letter-spacing: 0.02em;
     }
 
     article {
@@ -113,7 +117,8 @@ article header {
     }
 
     .logoContainer {
-        padding: 5px;
+        padding-left: 25px;
+        padding-bottom: 0px;
         display: block;
         font-family: 'Source Code Pro', monospace;
         width: 100%;
@@ -149,5 +154,13 @@ article header {
         color: #ce9178;
     }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
