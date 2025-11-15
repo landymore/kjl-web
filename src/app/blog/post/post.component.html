@@ -1,0 +1,13 @@
+<article class="container mx-auto py-8 prose prose-lg max-w-4xl mx-auto">
+  @if (post) {
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold mb-2">{{ post.meta.title }}</h1>
+      <p class="text-gray-600">
+        {{ post.meta.date | date:'fullDate' }} • {{ post.meta.tags.join(' • ') }}
+      </p>
+    </header>
+    <div [innerHTML]="post.html"></div>
+  } @else {
+    <p class="text-center text-red-600">Post not found or is a draft.</p>
+  }
+</article>

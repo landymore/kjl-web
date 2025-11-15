@@ -1,0 +1,15 @@
+[
+  {
+    "slug": "2025-11-10-getting-started",
+    "title": "Getting Started with Angular + Markdown Blog",
+    "date": "2025-11-15",
+    "published": true,
+    "tags": [
+      "angular",
+      "markdown",
+      "aws"
+    ],
+    "description": "A production-ready blog setup for Kevin Landymore.",
+    "html": "<h1>Hello from Angular</h1>\n<p>This is <strong>Markdown</strong> rendered at build time.</p>\n<pre><code class=\"language-ts\">console.log(\"Hello from code block\");\n</code></pre>\n"
+  }
+]

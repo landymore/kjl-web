@@ -1,11 +1,14 @@
 {
-  "name": "KevinJLandymore",
+  "name": "kevinjlandymore-web",
   "version": "2025.1.0",
+  "type": "module",
+  "description": "Personal website of Kevin J. Landymore",
+  "author": "Kevin J. Landymore",
   "scripts": {
-    "ng": "ng",
+    "blog:generate": "ts-node ./scripts/generate-blog-index.ts",
     "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "build": "npm run blog:generate && ng build --configuration production",
+    "lint": "ng lint",
     "test": "ng test"
   },
   "prettier": {
@@ -30,6 +33,9 @@
     "@angular/material": "^20.2.12",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
+    "glob": "^11.0.3",
+    "gray-matter": "^4.0.3",
+    "marked": "^17.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -38,13 +44,18 @@
     "@angular/build": "^20.3.9",
     "@angular/cli": "^20.3.9",
     "@angular/compiler-cli": "^20.3.0",
+    "@types/dompurify": "^3.2.0",
+    "@types/glob": "^8.1.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.12.1",
+    "jsdom": "^27.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "~5.9.2",
+    "url": "^0.11.4"
   }
 }
