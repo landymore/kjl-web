@@ -1,8 +1,8 @@
 <article class="container mx-auto py-8 prose prose-lg max-w-4xl mx-auto">
   @if (post) {
     <header class="mb-8">
-      <h1 class="text-4xl font-bold mb-2">{{ post.meta.title }}</h1>
-      <p class="text-gray-600">
+      <h1 class="blogTitle">{{ post.meta.title }}</h1>
+      <p class="postMetaData">
         {{ post.meta.date | date:'fullDate' }} • {{ post.meta.tags.join(' • ') }}
       </p>
     </header>

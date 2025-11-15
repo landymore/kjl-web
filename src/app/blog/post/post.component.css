@@ -1,0 +1,9 @@
+.blogTitle {
+    white-space: normal !important;
+    line-height: 1.5 !important;
+    word-break: break-word;
+}
+
+.postMetaData {
+    font-size: x-small
+}

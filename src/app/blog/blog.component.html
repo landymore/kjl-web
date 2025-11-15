@@ -1,5 +1,5 @@
 <section class="container mx-auto py-8">
-  <h1 class="text-4xl font-bold mb-8 text-center">Kevin's Blog</h1>
+  <h1 class="text-4xl font-bold mb-8 text-center">Articles</h1>
 
   @if (posts.length === 0) {
     <p class="text-center text-gray-500">No posts yet. Add one in <code>src/assets/content/posts/</code></p>
@@ -8,11 +8,11 @@
       @for (post of posts; track post.slug) {
         <article class="border rounded-lg p-6 hover:shadow-lg transition bg-white">
           <h2 class="text-xl font-semibold mb-2">
-            <a [routerLink]="['/blog', post.slug]" class="text-blue-600 hover:underline">
+            <a [routerLink]="['/blog', post.slug]" class="blogTitleLink">
               {{ post.title }}
             </a>
           </h2>
-          <p class="text-sm text-gray-600 mb-2">
+          <p class="postMetaData">
             {{ post.date | date:'mediumDate' }} • {{ post.tags.join(' • ') }}
           </p>
           @if (post.description) {

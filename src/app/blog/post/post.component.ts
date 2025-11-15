@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
   selector: 'app-post',
   templateUrl: './post.component.html',
   standalone: true,
+  styleUrl: './post.component.css',
   imports: [DatePipe]
 })
 export class PostComponent implements OnInit {

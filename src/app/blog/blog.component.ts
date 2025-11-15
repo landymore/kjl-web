@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-blog',
   templateUrl: './blog.component.html',
   standalone: true,
+  styleUrl: './blog.component.css',
   imports: [DatePipe, RouterLink]
 })
 export class BlogComponent implements OnInit {

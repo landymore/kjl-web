@@ -1,0 +1,18 @@
+.blogTitleLink {
+    color: #ce9178;
+    white-space: normal !important;
+    line-height: 1.5 !important;
+    word-break: break-word;
+}
+
+.blogTitleLink:hover {
+    text-decoration: underline;
+}
+
+.blogTitleLink:visited {
+    color: #ce9178
+}
+
+.postMetaData {
+    font-size: x-small
+}
