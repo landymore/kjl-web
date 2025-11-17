@@ -86,7 +86,7 @@ article header {
     color: #ce9178;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 625px) {
     .container {
         font-size: large;
     }
@@ -102,11 +102,11 @@ article header {
     }
 
     h1 {
-        font-size: x-large;
+        font-size: large;
     }
 
     article header {
-        font-size: x-large;
+        font-size: large;
         font-weight: 800;
         letter-spacing: 0.02em;
     }

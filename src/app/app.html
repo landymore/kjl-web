@@ -1,11 +1,6 @@
 <header>
   <mat-toolbar color="primary" class="app-toolbar">
-    <button 
-      mat-icon-button 
-      (click)="toggleSidenav()" 
-      *ngIf="showMenu()"
-      aria-label="Open navigation menu"
-    >
+    <button mat-icon-button (click)="toggleSidenav()" *ngIf="showMenu()" aria-label="Open navigation menu">
       <mat-icon>menu</mat-icon>
     </button>
 
@@ -19,10 +14,11 @@
 
     <!-- Desktop Nav Links -->
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home</a>
+      <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        class="nav-link">Home</a>
       <a mat-button routerLink="/blog" routerLinkActive="active" class="nav-link">Blog</a>
     </nav>
-  </mat-toolbar> 
+  </mat-toolbar>
   <div class='logoContainer'>
     <div class="logoBraceContainer">
       <span class='logoBraceStyle'>&#123;&nbsp;</span>
@@ -42,9 +38,21 @@
     </div>
   </div>
 </header>
-<main>
-  <router-outlet />
-</main>
+<mat-sidenav-container class="sidenav-container" autosize>
+  <mat-sidenav #sidenav mode="over" class="sidenav" [autoFocus]="false">
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let item of menuItems" [routerLink]="item.path" (click)="closeSidenav()"
+        routerLinkActive="active" [routerLinkActiveOptions]="{ exact: item.exact ?? false }">
+        {{ item.label }}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <main>
+      <router-outlet />
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 <footer>
   <div class="footertext">&#169; Kevin J Landymore</div>
 </footer>

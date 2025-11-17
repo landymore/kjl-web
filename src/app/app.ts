@@ -12,6 +12,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
+interface MenuItem {
+  label: string;
+  path: string;
+  exact?: boolean; // true = only match exact path
+}
+
 @Component({
   selector: 'app-root',
   imports: [
@@ -30,6 +36,12 @@ import { MatListModule } from '@angular/material/list';
 })
 
 export class App {
+
+  menuItems: MenuItem[] = [
+    { label: 'Home', path: '/', exact: true },
+    { label: 'Blog', path: '/blog' }
+  ];
+
   private breakpoint = inject(BreakpointObserver);
   isHandset = toSignal(
     this.breakpoint.observe(Breakpoints.Handset).pipe(map(r => r.matches)),
