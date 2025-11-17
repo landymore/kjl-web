@@ -86,7 +86,7 @@ article header {
     color: #ce9178;
 }
 
-@media (max-width: 625px) {
+@media (max-width: 500px) {
     .container {
         font-size: large;
     }
@@ -152,14 +152,4 @@ article header {
     .logoValueStyle {
         color: #ce9178;
     }
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
