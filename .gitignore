@@ -41,3 +41,6 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Ignore generated posts index, this will be generated with each build.
+/src/assets/content/posts-index.json
