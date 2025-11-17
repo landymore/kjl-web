@@ -35,6 +35,9 @@
             ],
             "allowedCommonJsDependencies": [
               "gray-matter"
+            ],
+            "externalDependencies": [
+              "@angular/animations/browser"
             ]
           },
           "configurations": {
@@ -51,7 +54,10 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "externalDependencies": [
+                "@angular/animations/browser"
+              ]
             },
             "development": {
               "optimization": false,
