@@ -3,7 +3,7 @@ title: "Enhancing Security in DevOps: Short-Lived Credentials and OIDC for Autom
 date: 2025-11-01
 published: true
 tags: ["git", "github", "oidc", "cicd"]
-description: "A detailed overview on a branching strategy that can scale."
+description: "How to deploy securely without lifecycling tokens or username / password credentials."
 ---
 
 In the fast-paced world of DevOps, where automated pipelines drive deployments at scale, securing machine-to-machine interactions is paramount. As someone building a personal brand around innovative tech solutions that streamline developer workflows, I’ve spent years refining practices that eliminate human error and enable seamless automation. Today, let's explore using **short-lived credentials** with **OpenID Connect (OIDC)** to fortify CI/CD pipelines and cloud-native deployments—shifting away from user-centric auth to robust, ephemeral tokens for services and workloads.
