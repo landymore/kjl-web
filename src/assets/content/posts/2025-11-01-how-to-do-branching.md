@@ -6,7 +6,7 @@ tags: ["git", "github", "branching"]
 description: "A detailed overview on a branching strategy that can scale."
 ---
 
-As a software engineer passionate about building scalable systems and fostering collaborative teams, I've seen firsthand how a solid branching strategy can make or break a project's success. In my journey creating tools and platforms that empower developers, I've experimented with various approaches. Today, I want to share insights on implementing an effective branching strategy that promotes clean code, rapid iteration, and minimal conflicts. This isn't just theory—it's drawn from real-world applications in fast-paced environments. Forget outdated models like GitFlow—it's garbage, even the original author has seen the light. Instead, let's focus on **Trunk-Based Development (TBD)**, which is the way forward for modern teams.
+As a software engineer passionate about building scalable systems and fostering collaborative teams, I've seen firsthand how a solid branching strategy can make or break a project's success. In my journey creating tools and platforms that empower developers, I've experimented with various approaches. Today, I want to share insights on implementing an effective branching strategy that promotes clean code, rapid iteration, and minimal conflicts. This isn't just theory—it's drawn from real-world applications in fast-paced environments. Forget GitFlow—it's cludgy at best, even the original author has seen the light and has rescinded his reccomendation to use it. Instead, let's focus on **Trunk-Based Development (TBD)**, which is the way forward for modern teams.
 
 ## Why Branching Matters
 

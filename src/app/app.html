@@ -3,40 +3,19 @@
     <button mat-icon-button (click)="toggleSidenav()" *ngIf="showMenu()" aria-label="Open navigation menu">
       <mat-icon>menu</mat-icon>
     </button>
-
     <!-- Logo / Brand Name -->
     <a routerLink="/" class="logo" aria-label="Kevin Landymore - Home">
       <strong>KL</strong>
       <!-- Optional: <img src="assets/logo.svg" alt="" height="36"> -->
     </a>
-
     <span class="spacer"></span>
-
     <!-- Desktop Nav Links -->
-    <nav class="desktop-nav" aria-label="Main navigation">
+    <nav class="desktop-nav" aria-label="Main navigation" *ngIf="!showMenu()">
       <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
         class="nav-link">Home</a>
       <a mat-button routerLink="/blog" routerLinkActive="active" class="nav-link">Blog</a>
     </nav>
   </mat-toolbar>
-  <div class='logoContainer'>
-    <div class="logoBraceContainer">
-      <span class='logoBraceStyle'>&#123;&nbsp;</span>
-    </div>
-    <div class="logoVariableContainer">
-      <span class="logoQuoteStyle"> &quot;</span>
-      <span class="logoVariableStyle">name</span>
-      <span class="logoQuoteStyle">&quot;:&nbsp;</span>
-    </div>
-    <div class="logoValueContainer">
-      <span class='logoQuoteStyle'>&quot;</span>
-      <span class='logoValueStyle'>Kevin&nbsp;J&nbsp;Landymore</span>
-      <span class='logoQuoteStyle'>&quot;&nbsp;</span>
-    </div>
-    <div class="logoBraceContainer">
-      <span class='logoBraceStyle'>&#125;</span>
-    </div>
-  </div>
 </header>
 <mat-sidenav-container class="sidenav-container" autosize>
   <mat-sidenav #sidenav mode="over" class="sidenav" [autoFocus]="false">
@@ -49,9 +28,30 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <main>
+      <div class='logoContainer'>
+        <div class="logoInnerContainer">
+          <div class="logoBraceContainer">
+            <span class='logoBraceStyle'>&#123;&nbsp;</span>
+          </div>
+          <div class="logoVariableContainer">
+            <span class="logoQuoteStyle"> &quot;</span>
+            <span class="logoVariableStyle">name</span>
+            <span class="logoQuoteStyle">&quot;:&nbsp;</span>
+          </div>
+          <div class="logoValueContainer">
+            <span class='logoQuoteStyle'>&quot;</span>
+            <span class='logoValueStyle'>Kevin&nbsp;J&nbsp;Landymore</span>
+            <span class='logoQuoteStyle'>&quot;&nbsp;</span>
+          </div>
+          <div class="logoBraceContainer">
+            <span class='logoBraceStyle'>&#125;</span>
+          </div>
+        </div>
+      </div>
       <router-outlet />
     </main>
   </mat-sidenav-content>
+
 </mat-sidenav-container>
 <footer>
   <div class="footertext">&#169; Kevin J Landymore</div>
