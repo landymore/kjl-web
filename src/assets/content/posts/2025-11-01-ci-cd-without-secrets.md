@@ -3,7 +3,7 @@ title: "Enhancing Security in DevOps: Short-Lived Credentials and OIDC for Autom
 date: 2025-11-01
 published: true
 tags: ["git", "github", "oidc", "cicd"]
-description: "How to deploy securely without lifecycling tokens or username / password credentials."
+description: "How to deploy to your cloud environments securely without lifecycling long lived credentials."
 ---
 
 In the fast-paced world of DevOps, where automated pipelines drive deployments at scale, securing machine-to-machine interactions is paramount. As someone building a personal brand around innovative tech solutions that streamline developer workflows, I’ve spent years refining practices that eliminate human error and enable seamless automation. Today, let's explore using **short-lived credentials** with **OpenID Connect (OIDC)** to fortify CI/CD pipelines and cloud-native deployments—shifting away from user-centric auth to robust, ephemeral tokens for services and workloads.
@@ -49,7 +49,7 @@ Drawing from my hands-on setups in production pipelines, here's a streamlined gu
 5. **Leverage Best Practices**
 
 
-- **Principle of Least Privilege:** Condition roles on repository, branch, or ref (e.g., only main deploys to prod).
+- **Principle of Least Privilege:** Condition roles on repository and environment if possible - otherwise constrain branch, or ref (e.g., only main deploys to prod).
 - **Automated Rotation and Monitoring:** Use policy checks in pipelines; integrate with SIEM for anomaly detection on assumptions.
 - **Immutable Pipelines:** Bake OIDC logic into repo templates to enforce consistency.
 
