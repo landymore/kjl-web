@@ -31,7 +31,7 @@
     "@angular/core": "^20.3.0",
     "@angular/forms": "^20.3.0",
     "@angular/material": "^20.2.12",
-    "@angular/platform-browser": "^20.3.0",
+    "@angular/platform-browser": "^21.0.2",
     "@angular/router": "^20.3.0",
     "glob": "^11.0.3",
     "gray-matter": "^4.0.3",
