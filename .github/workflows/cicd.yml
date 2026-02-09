@@ -85,7 +85,7 @@ jobs:
         name: infra
         path: infrastructure
 
-    - uses: aws-actions/configure-aws-credentials@v5
+    - uses: aws-actions/configure-aws-credentials@v6
       with:
         role-session-name: ${{ github.run_id }}
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
