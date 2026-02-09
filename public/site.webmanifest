@@ -1,0 +1,21 @@
+{
+"name": "Kevin Landymore - Enterprise Architect",
+  "short_name": "KL Arch",
+  "description": "Seasoned IT professional specializing in cloud solutions and utility sector innovations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ce9178",  
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
